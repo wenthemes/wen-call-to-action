@@ -136,7 +136,7 @@ class WEN_Call_To_Action_Public {
     $is_valid_cta = $this->check_if_valid_cta( $atts );
 
     if ( ! $is_valid_cta ) {
-      return __( 'CTA not found', 'wen-call-to-action' );
+      return __( 'Call To Action not found.', 'wen-call-to-action' );
     }
 
     // Fetch default template

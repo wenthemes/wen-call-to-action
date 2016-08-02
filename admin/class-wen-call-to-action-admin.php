@@ -235,7 +235,7 @@ class WEN_Call_To_Action_Admin {
         </div><!-- .field-label -->
         <div class="field-content">
           <input type="text" name="_cta_custom_class" value="<?php echo esc_attr( $cta_custom_class) ?>" />
-          <br/><em><?php _e( 'This class will be added in the wrapper div of the Call To Action.', 'wen-call-to-action' ); ?></em>
+          <br/><em><?php _e( 'This class will be added in the wrapper HTML tag of the Call To Action.', 'wen-call-to-action' ); ?></em>
         </div><!-- .field-content -->
       </div><!-- .field-row -->
     </div><!-- #main-cta-detail-wrap -->

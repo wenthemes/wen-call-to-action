@@ -65,7 +65,7 @@ msgid "Custom Class"
 msgstr ""
 
 #: admin/class-wen-call-to-action-admin.php:238
-msgid "This class will be added in the wrapper div of the Call To Action."
+msgid "This class will be added in the wrapper HTML tag of the Call To Action."
 msgstr ""
 
 #: admin/class-wen-call-to-action-admin.php:263
@@ -147,7 +147,7 @@ msgid "No call to actions found in Trash."
 msgstr ""
 
 #: public/class-wen-call-to-action-public.php:139
-msgid "CTA not found"
+msgid "Call To Action not found."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
