@@ -7,7 +7,7 @@ module.exports = function( grunt ) {
 	var deploy_files_list = [
 		'admin/**',
 		'includes/**',
-		'languages/**',
+		'public/**',
 		'readme.txt',
 		'<%= pkg.main_file %>',
 		'uninstall.php'
