@@ -56,24 +56,14 @@ class WEN_Call_To_Action_Admin {
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function enqueue_styles() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in WEN_Call_To_Action_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The WEN_Call_To_Action_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
 		$screen = get_current_screen();
 		if ( WEN_CALL_TO_ACTION_POST_TYPE_CTA === $screen->id ) {
-			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wen-call-to-action-admin.css', array(), $this->version, 'all' );
+			$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wen-call-to-action-admin' . $min . '.css', array(), $this->version, 'all' );
 		}
 
 	}

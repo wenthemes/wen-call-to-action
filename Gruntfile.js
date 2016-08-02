@@ -22,7 +22,10 @@ module.exports = function( grunt ) {
 		dirs: {
 			js: 'admin/js',
 			css: 'admin/css',
-			images: 'admin/images'
+			images: 'admin/images',
+			js_public: 'public/js',
+			css_public: 'public/css',
+			images_public: 'public/images'
 		},
 
 		// Other options.
@@ -183,7 +186,7 @@ module.exports = function( grunt ) {
 
 		// CSS minification.
 		cssmin: {
-			target: {
+			admin: {
 				files: [{
 					expand: true,
 					cwd: '<%= dirs.css %>',
@@ -191,8 +194,18 @@ module.exports = function( grunt ) {
 					dest: '<%= dirs.css %>',
 					ext: '.min.css'
 				}]
+			},
+			public: {
+				files: [{
+					expand: true,
+					cwd: '<%= dirs.css_public %>',
+					src: ['*.css', '!*.min.css'],
+					dest: '<%= dirs.css_public %>',
+					ext: '.min.css'
+				}]
 			}
 		},
+
 		// Check JS.
 		jshint: {
 			options: grunt.file.readJSON( '.jshintrc' ),

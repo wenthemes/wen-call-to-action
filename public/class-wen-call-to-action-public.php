@@ -60,7 +60,8 @@ class WEN_Call_To_Action_Public {
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wen-call-to-action-public.css', array(), $this->version, 'all' );
+		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wen-call-to-action-public' . $min . '.css', array(), $this->version, 'all' );
 
 	}
 
