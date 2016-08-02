@@ -88,8 +88,8 @@ class WEN_Call_To_Action_Admin {
 
     $new_columns['cb']     = '<input type="checkbox" />';
     $new_columns['title']  = $columns['title'];
-    $new_columns['id']     = _x( 'ID', 'column name', 'wen-call-to-action-admin' );
-    $new_columns['usage']  = __( 'Usage', 'wen-call-to-action-admin' );
+    $new_columns['id']     = _x( 'ID', 'column name', 'wen-call-to-action' );
+    $new_columns['usage']  = __( 'Usage', 'wen-call-to-action' );
     $new_columns['date']   = $columns['date'];
     return $new_columns;
 
