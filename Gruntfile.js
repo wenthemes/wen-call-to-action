@@ -1,4 +1,3 @@
-/* jshint node:true */
 module.exports = function( grunt ) {
 	'use strict';
 
@@ -204,33 +203,8 @@ module.exports = function( grunt ) {
 					ext: '.min.css'
 				}]
 			}
-		},
-
-		// Check JS.
-		jshint: {
-			options: grunt.file.readJSON( '.jshintrc' ),
-			all: [
-				'<%= pkg.main %>',
-				'js/*.js',
-				'!js/*.min.js'
-			]
-		},
-
-		// Uglify JS.
-		uglify: {
-			target: {
-				options: {
-					mangle: false
-				},
-				files: [{
-					expand: true,
-					cwd: '<%= dirs.js %>',
-					src: ['*.js', '!*.min.js'],
-					dest: '<%= dirs.js %>',
-					ext: '.min.js'
-				}]
-			}
 		}
+
 	});
 
 	// Load NPM tasks to be used here.
@@ -238,8 +212,6 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( 'grunt-contrib-clean' );
 	grunt.loadNpmTasks( 'grunt-contrib-copy' );
 	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
-	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
-	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-push-svn' );
 	grunt.loadNpmTasks( 'grunt-svn-export' );
 	grunt.loadNpmTasks( 'grunt-text-replace' );
@@ -250,13 +222,11 @@ module.exports = function( grunt ) {
 
 	grunt.registerTask( 'build', [
 		'cssmin',
-		'uglify',
 		'addtextdomain',
 		'makepot'
 	]);
 
 	grunt.registerTask( 'precommit', [
-		'jshint',
 		'checktextdomain'
 	]);
 

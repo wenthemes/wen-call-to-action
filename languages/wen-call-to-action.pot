@@ -19,7 +19,7 @@ msgstr ""
 "Language: en_US\n"
 "X-Poedit-SearchPath-0: ../../wen-call-to-action\n"
 
-#: admin/class-wen-call-to-action-admin.php:92
+#: admin/class-wen-call-to-action-admin.php:84
 #: admin/class-wen-call-to-action-admin.php:183
 msgid "Usage"
 msgstr ""
@@ -32,121 +32,121 @@ msgstr ""
 msgid "Call To Action Design"
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:218
+#: admin/class-wen-call-to-action-admin.php:220
 msgid "Theme"
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:222
-#: admin/class-wen-call-to-action-admin.php:227
+#: admin/class-wen-call-to-action-admin.php:224
+#: admin/class-wen-call-to-action-admin.php:229
 msgid "Default"
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:223
-#: admin/class-wen-call-to-action-admin.php:228
+#: admin/class-wen-call-to-action-admin.php:225
+#: admin/class-wen-call-to-action-admin.php:230
 msgid "No Style"
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:224
+#: admin/class-wen-call-to-action-admin.php:226
 msgid "Blue Sky"
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:227
+#: admin/class-wen-call-to-action-admin.php:229
 msgid "Basic style will be applied."
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:228
+#: admin/class-wen-call-to-action-admin.php:230
 msgid ""
 "No style will be applied. Select this option if you want to add styling "
 "from your theme."
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:234
+#: admin/class-wen-call-to-action-admin.php:236
 msgid "Custom Class"
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:238
+#: admin/class-wen-call-to-action-admin.php:240
 msgid "This class will be added in the wrapper HTML tag of the Call To Action."
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:263
+#: admin/class-wen-call-to-action-admin.php:267
 msgid "Button Text"
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:267
+#: admin/class-wen-call-to-action-admin.php:271
 msgid "Enter button text"
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:272
+#: admin/class-wen-call-to-action-admin.php:276
 msgid "Button URL"
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:276
+#: admin/class-wen-call-to-action-admin.php:280
 msgid "Enter full URL"
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:281
+#: admin/class-wen-call-to-action-admin.php:285
 msgid "Open in New Window"
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:286
+#: admin/class-wen-call-to-action-admin.php:290
 msgid "Check to enable"
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:373
+#: admin/class-wen-call-to-action-admin.php:391
 msgid "Shortcode"
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:374
+#: admin/class-wen-call-to-action-admin.php:392
 msgid "Copy and paste this shortcode directly into any WordPress post or page."
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:377
+#: admin/class-wen-call-to-action-admin.php:395
 msgid "Template Include"
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:378
+#: admin/class-wen-call-to-action-admin.php:396
 msgid ""
 "Copy and paste this code into a template file to include the slider within "
 "your theme."
 msgstr ""
 
-#: public/class-wen-call-to-action-public.php:94
+#: public/class-wen-call-to-action-public.php:82
 msgid "Add New Call To Action"
 msgstr ""
 
-#: public/class-wen-call-to-action-public.php:95
+#: public/class-wen-call-to-action-public.php:83
 msgid "New Call To Action"
 msgstr ""
 
-#: public/class-wen-call-to-action-public.php:96
+#: public/class-wen-call-to-action-public.php:84
 msgid "Edit Call To Action"
 msgstr ""
 
-#: public/class-wen-call-to-action-public.php:97
+#: public/class-wen-call-to-action-public.php:85
 msgid "View Call To Action"
 msgstr ""
 
-#: public/class-wen-call-to-action-public.php:98
+#: public/class-wen-call-to-action-public.php:86
 msgid "All Call To Actions"
 msgstr ""
 
-#: public/class-wen-call-to-action-public.php:99
+#: public/class-wen-call-to-action-public.php:87
 msgid "Search Call To Actions"
 msgstr ""
 
-#: public/class-wen-call-to-action-public.php:100
+#: public/class-wen-call-to-action-public.php:88
 msgid "Parent Call To Actions:"
 msgstr ""
 
-#: public/class-wen-call-to-action-public.php:101
+#: public/class-wen-call-to-action-public.php:89
 msgid "No call to actions found."
 msgstr ""
 
-#: public/class-wen-call-to-action-public.php:102
+#: public/class-wen-call-to-action-public.php:90
 msgid "No call to actions found in Trash."
 msgstr ""
 
-#: public/class-wen-call-to-action-public.php:139
+#: public/class-wen-call-to-action-public.php:130
 msgid "Call To Action not found."
 msgstr ""
 
@@ -170,32 +170,32 @@ msgstr ""
 msgid "http://wenthemes.com"
 msgstr ""
 
-#: admin/class-wen-call-to-action-admin.php:91
+#: admin/class-wen-call-to-action-admin.php:83
 msgctxt "column name"
 msgid "ID"
 msgstr ""
 
-#: public/class-wen-call-to-action-public.php:89
+#: public/class-wen-call-to-action-public.php:77
 msgctxt "post type general name"
 msgid "Call To Actions"
 msgstr ""
 
-#: public/class-wen-call-to-action-public.php:90
+#: public/class-wen-call-to-action-public.php:78
 msgctxt "post type singular name"
 msgid "Call To Action"
 msgstr ""
 
-#: public/class-wen-call-to-action-public.php:91
+#: public/class-wen-call-to-action-public.php:79
 msgctxt "admin menu"
 msgid "Call To Action"
 msgstr ""
 
-#: public/class-wen-call-to-action-public.php:92
+#: public/class-wen-call-to-action-public.php:80
 msgctxt "add new on admin bar"
 msgid "Call To Action"
 msgstr ""
 
-#: public/class-wen-call-to-action-public.php:93
+#: public/class-wen-call-to-action-public.php:81
 msgctxt "wen_cta"
 msgid "Add New"
 msgstr ""
