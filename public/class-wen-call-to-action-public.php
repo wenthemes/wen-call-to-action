@@ -304,14 +304,13 @@ class WEN_Call_To_Action_Public {
 
       $cta = get_post( intval( $args['id'] ) );
 
-      if ( ! empty( $cta ) && WEN_CALL_TO_ACTION_POST_TYPE_CTA == $cta->post_type ) {
+      if ( ! empty( $cta ) && 'publish' === $cta->post_status && WEN_CALL_TO_ACTION_POST_TYPE_CTA == $cta->post_type ) {
         $output = true;
       }
     }
     return $output;
 
   }
-
 
 
 }
