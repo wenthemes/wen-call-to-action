@@ -1,28 +1,18 @@
 <?php
-
 /**
- * The plugin bootstrap file
+ * The plugin bootstrap file.
  *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
+ * @package WEN_Call_To_Action
  *
- * @link              http://wenthemes.com
- * @since             1.0.0
- * @package           WEN_Call_To_Action
- *
- * @wordpress-plugin
- * Plugin Name:       WEN Call To Action
- * Plugin URI:        http://wenthemes.com/item/wordpress-plugins/wen-call-to-action/
- * Description:       Easily create call to action for your WordPress site.
+ * Plugin Name: WEN Call To Action
+ * Plugin URI: http://wenthemes.com/item/wordpress-plugins/wen-call-to-action/
+ * Description: Easily create call to action for your WordPress site.
  * Version: 1.2.0
- * Author:            WEN Themes
- * Author URI:        http://wenthemes.com
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       wen-call-to-action
- * Domain Path:       /languages
+ * Author: WEN Themes
+ * Author URI: http://wenthemes.com
+ * License: GPL-2.0+
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain: wen-call-to-action
  */
 
 // If this file is called directly, abort.
@@ -30,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// Define
+// Define.
 define( 'WEN_CALL_TO_ACTION_NAME', 'WEN Call To Action' );
 define( 'WEN_CALL_TO_ACTION_SLUG', 'wen-call-to-action' );
 define( 'WEN_CALL_TO_ACTION_VERSION', '1.1' );
