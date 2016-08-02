@@ -16,7 +16,7 @@
  * Plugin Name:       WEN Call To Action
  * Plugin URI:        http://wenthemes.com/item/wordpress-plugins/wen-call-to-action/
  * Description:       Easily create call to action for your WordPress site.
- * Version:           1.1
+ * Version: 1.2.0
  * Author:            WEN Themes
  * Author URI:        http://wenthemes.com
  * License:           GPL-2.0+

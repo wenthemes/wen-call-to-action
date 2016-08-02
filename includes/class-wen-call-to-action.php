@@ -87,7 +87,7 @@ class WEN_Call_To_Action {
 	public function __construct() {
 
 		$this->plugin_name = 'wen-call-to-action';
-		$this->version = '1.1';
+		$this->version = '1.2.0';
 
     $this->load_dependencies();
     $this->set_locale();

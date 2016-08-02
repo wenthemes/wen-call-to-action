@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: WEN Call To Action 1.1\n"
+"Project-Id-Version: WEN Call To Action 1.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-26 12:25+0545\n"
 "MIME-Version: 1.0\n"

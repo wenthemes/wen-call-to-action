@@ -2,9 +2,9 @@
 Contributors: wenthemes
 Donate link: http://wenthemes.com/item/wordpress-plugins/wen-call-to-action/
 Tags: Call To Action, Calls To Action, CTA, CTA Button, shortcode, widget, call outs, call out, message box, conversion box, button, shortcode button
-Requires at least: 4.0
-Tested up to: 4.3
-Stable tag: 1.1
+Requires at least: 4.4
+Tested up to: 4.6
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,9 @@ Nice, make a post on the [Support Forum](http://wordpress.org/support/plugin/wen
 3. Display CTA in front-end (Blue Sky theme)
 
 == Changelog ==
+
+= 1.2.0 - Aug 2 2016 =
+* Minor bug fixes
 
 = 1.1 =
 * Minor bug fixes
