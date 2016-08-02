@@ -1,7 +1,6 @@
 <?php
-
 /**
- * The file that defines the core plugin class
+ * The file that defines the core plugin class.
  *
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
@@ -57,23 +56,23 @@ class WEN_Call_To_Action {
 	 */
 	protected $version;
 
-  /**
-   * Instance of plugin admin.
-   *
-   * @since    1.0.0
-   * @access   protected
-   * @var      string    $plugin_admin    The object of plugin admin class.
-   */
-  protected $plugin_admin;
+	/**
+	 * Instance of plugin admin.
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      string    $plugin_admin    The object of plugin admin class.
+	 */
+	protected $plugin_admin;
 
-  /**
-   * Instance of plugin public.
-   *
-   * @since    1.0.0
-   * @access   protected
-   * @var      string    $plugin_public    The object of plugin public class.
-   */
-  protected $plugin_public;
+	/**
+	 * Instance of plugin public.
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      string    $plugin_public    The object of plugin public class.
+	 */
+	protected $plugin_public;
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -89,13 +88,13 @@ class WEN_Call_To_Action {
 		$this->plugin_name = 'wen-call-to-action';
 		$this->version = '1.2.0';
 
-    $this->load_dependencies();
-    $this->set_locale();
-    $this->plugin_admin  = new WEN_Call_To_Action_Admin( $this->get_plugin_name(), $this->get_version() );
-    $this->plugin_public = new WEN_Call_To_Action_Public( $this->get_plugin_name(), $this->get_version() );
-    $this->define_admin_hooks();
-    $this->define_public_hooks();
-    $this->define_short_codes();
+		$this->load_dependencies();
+		$this->set_locale();
+		$this->plugin_admin  = new WEN_Call_To_Action_Admin( $this->get_plugin_name(), $this->get_version() );
+		$this->plugin_public = new WEN_Call_To_Action_Public( $this->get_plugin_name(), $this->get_version() );
+		$this->define_admin_hooks();
+		$this->define_public_hooks();
+		$this->define_short_codes();
 
 	}
 
@@ -162,17 +161,17 @@ class WEN_Call_To_Action {
 
 	}
 
-  /**
-   * Register all of the shortcodes.
-   *
-   * @since    1.0.0
-   * @access   private
-   */
-  private function define_short_codes() {
+	/**
+	 * Register all of the shortcodes.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function define_short_codes() {
 
-    add_shortcode( 'wen_cta', array( $this->plugin_public, 'shortcode_cb_wen_cta' ) );
+		add_shortcode( 'wen_cta', array( $this->plugin_public, 'shortcode_cb_wen_cta' ) );
 
-  }
+	}
 
 	/**
 	 * Register all of the hooks related to the admin area functionality
@@ -187,21 +186,21 @@ class WEN_Call_To_Action {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 
-    // Add Admin column
-    $this->loader->add_filter( "manage_".WEN_CALL_TO_ACTION_POST_TYPE_CTA."_posts_columns", $plugin_admin, 'usage_column_head' );
-    $this->loader->add_action( "manage_".WEN_CALL_TO_ACTION_POST_TYPE_CTA."_posts_custom_column", $plugin_admin, 'usage_column_content', 10, 2 );
+		// Add Admin column.
+		$this->loader->add_filter( 'manage_'.WEN_CALL_TO_ACTION_POST_TYPE_CTA.'_posts_columns', $plugin_admin, 'usage_column_head' );
+		$this->loader->add_action( 'manage_'.WEN_CALL_TO_ACTION_POST_TYPE_CTA.'_posts_custom_column', $plugin_admin, 'usage_column_content', 10, 2 );
 
-    // Add metaboxes
-    $this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'add_cta_meta_boxes' );
-    $this->loader->add_action( 'save_post', $plugin_admin, 'save_cta_detail_meta_box' );
-    $this->loader->add_action( 'save_post', $plugin_admin, 'save_cta_design_meta_box' );
+		// Add metaboxes.
+		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'add_cta_meta_boxes' );
+		$this->loader->add_action( 'save_post', $plugin_admin, 'save_cta_detail_meta_box' );
+		$this->loader->add_action( 'save_post', $plugin_admin, 'save_cta_design_meta_box' );
 
-    // Row action
-    $this->loader->add_filter( 'post_row_actions', $plugin_admin, 'customize_row_actions', 10, 2 );
+		// Row actions.
+		$this->loader->add_filter( 'post_row_actions', $plugin_admin, 'customize_row_actions', 10, 2 );
 
-    // Hide publishing actions
-    $this->loader->add_action( 'admin_head-post.php', $plugin_admin, 'hide_publishing_actions' );
-    $this->loader->add_action( 'admin_head-post-new.php', $plugin_admin, 'hide_publishing_actions' );
+		// Hide publishing actions.
+		$this->loader->add_action( 'admin_head-post.php', $plugin_admin, 'hide_publishing_actions' );
+		$this->loader->add_action( 'admin_head-post-new.php', $plugin_admin, 'hide_publishing_actions' );
 
 	}
 
@@ -218,15 +217,15 @@ class WEN_Call_To_Action {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 
-    // Register custom post type
-    $this->loader->add_filter( 'init', $plugin_public, 'custom_post_types' );
+		// Register custom post type.
+		$this->loader->add_filter( 'init', $plugin_public, 'custom_post_types' );
 
-    // Add default class
-    $this->loader->add_filter( 'wen_call_to_action_filter_custom_class', $plugin_public, 'add_extra_custom_class', 10, 2 );
+		// Add default class.
+		$this->loader->add_filter( 'wen_call_to_action_filter_custom_class', $plugin_public, 'add_extra_custom_class', 10, 2 );
 
-    // Enable shortcode in Text widget
-    add_filter( 'widget_text', 'shortcode_unautop' );
-    add_filter( 'widget_text', 'do_shortcode' );
+		// Enable shortcode in Text widget.
+		add_filter( 'widget_text', 'shortcode_unautop' );
+		add_filter( 'widget_text', 'do_shortcode' );
 
 	}
 
@@ -269,5 +268,4 @@ class WEN_Call_To_Action {
 	public function get_version() {
 		return $this->version;
 	}
-
 }

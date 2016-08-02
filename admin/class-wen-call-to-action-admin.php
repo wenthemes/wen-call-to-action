@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -44,8 +43,8 @@ class WEN_Call_To_Action_Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of this plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
@@ -72,150 +71,163 @@ class WEN_Call_To_Action_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-    $screen = get_current_screen();
-    if ( WEN_CALL_TO_ACTION_POST_TYPE_CTA == $screen->id ) {
-      wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wen-call-to-action-admin.css', array(), $this->version, 'all' );
-    }
+		$screen = get_current_screen();
+		if ( WEN_CALL_TO_ACTION_POST_TYPE_CTA === $screen->id ) {
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wen-call-to-action-admin.css', array(), $this->version, 'all' );
+		}
 
 	}
 
-  /**
-   * Manage column head in admin listing.
-   *
-   * @since    1.0.0
-   */
-  function usage_column_head( $columns ){
+	/**
+	 * Manage column head in admin listing.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $columns An array of column names.
+	 * @return array Modified array of column names.
+	 */
+	function usage_column_head( $columns ) {
 
-    $new_columns['cb']     = '<input type="checkbox" />';
-    $new_columns['title']  = $columns['title'];
-    $new_columns['id']     = _x( 'ID', 'column name', 'wen-call-to-action' );
-    $new_columns['usage']  = __( 'Usage', 'wen-call-to-action' );
-    $new_columns['date']   = $columns['date'];
-    return $new_columns;
+		$new_columns['cb']     = '<input type="checkbox" />';
+		$new_columns['title']  = $columns['title'];
+		$new_columns['id']     = _x( 'ID', 'column name', 'wen-call-to-action' );
+		$new_columns['usage']  = __( 'Usage', 'wen-call-to-action' );
+		$new_columns['date']   = $columns['date'];
+		return $new_columns;
 
-  }
+	}
 
-  /**
-   * Content for extra column in admin listing.
-   *
-   * @since    1.0.0
-   */
-  function usage_column_content( $column_name, $post_id ){
+	/**
+	 * Content for extra column in admin listing.
+	 *
+	 * @since    1.0.0
+	 *
+	 * @param array $column_name The name of the column to display.
+	 * @param array $post_id The current post ID.
+	 */
+	function usage_column_content( $column_name, $post_id ) {
 
-    switch ( $column_name ) {
-      case 'id':
-        echo $post_id;
-        break;
+		switch ( $column_name ) {
+			case 'id':
+				echo $post_id;
+			break;
 
-      case 'usage':
-        echo '<code>[wen_cta id="' . $post_id . '"]</code>';
-        break;
+			case 'usage':
+				echo '<code>[wen_cta id="' . $post_id . '"]</code>';
+			break;
 
-      default:
-        break;
-    }
+			default:
+			break;
+		}
 
-  }
+	}
 
-  /**
-   * Hide publishing actions in edit page.
-   *
-   * @since    1.0.0
-   */
-  public function hide_publishing_actions() {
-    global $post;
-    if ( WEN_CALL_TO_ACTION_POST_TYPE_CTA != $post->post_type ) {
-      return;
-    }
-    ?>
+	/**
+	 * Hide publishing actions in edit page.
+	 *
+	 * @since    1.0.0
+	 */
+	public function hide_publishing_actions() {
+		global $post;
+		if ( WEN_CALL_TO_ACTION_POST_TYPE_CTA !== $post->post_type ) {
+			return;
+		}
+	?>
     <style type="text/css">
     #misc-publishing-actions,#minor-publishing-actions{
       display:none;
     }
     </style>
     <?php
-    return;
-  }
+	return;
+	}
 
-  /**
-   * Customize post row actions.
-   *
-   * @since    1.0.0
-   */
-  function customize_row_actions( $actions, $post ){
+	/**
+	 * Customize post row actions.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array   $actions An array of row action links.
+	 * @param WP_Post $post The post object.
+	 */
+	function customize_row_actions( $actions, $post ) {
 
-    if ( WEN_CALL_TO_ACTION_POST_TYPE_CTA == $post->post_type ) {
+		if ( WEN_CALL_TO_ACTION_POST_TYPE_CTA === $post->post_type ) {
 
-      unset( $actions['inline hide-if-no-js'] );
+			unset( $actions['inline hide-if-no-js'] );
 
-    }
+		}
 
-    return $actions;
+		return $actions;
 
-  }
+	}
 
-  /**
-   * Add meta boxes.
-   *
-   * @since    1.0.0
-   */
-  function add_cta_meta_boxes( $post_type ){
+	/**
+	 * Add meta boxes.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $post_type Post type.
+	 */
+	function add_cta_meta_boxes( $post_type ) {
 
-    // Bail if not our post type
-    if ( $post_type != WEN_CALL_TO_ACTION_POST_TYPE_CTA ) {
-      return;
-    }
+		// Bail if not our post type.
+		if ( WEN_CALL_TO_ACTION_POST_TYPE_CTA !== $post_type ) {
+			return;
+		}
 
-    $screens = array( WEN_CALL_TO_ACTION_POST_TYPE_CTA );
+		$screens = array( WEN_CALL_TO_ACTION_POST_TYPE_CTA );
 
-    foreach ( $screens as $screen ) {
+		foreach ( $screens as $screen ) {
 
-      add_meta_box(
-        'wen_call_to_action_detail_content_id',
-        __( 'Call To Action Info', 'wen-call-to-action' ),
-        array( $this,'cta_meta_box_callback' ),
-        $screen,
-        'side',
-        'high'
-      );
-      add_meta_box(
-        'wen_call_to_action_usage_content_id',
-        __( 'Usage', 'wen-call-to-action' ),
-        array( $this, 'usage_meta_box_callback' ),
-        $screen,
-        'side'
-      );
-      add_meta_box(
-        'wen_call_to_action_style_content_id',
-        __( 'Call To Action Design', 'wen-call-to-action' ),
-        array( $this, 'cta_design_meta_box_callback' ),
-        $screen,
-        'normal',
-        'high'
-      );
+			add_meta_box(
+				'wen_call_to_action_detail_content_id',
+				__( 'Call To Action Info', 'wen-call-to-action' ),
+				array( $this,'cta_meta_box_callback' ),
+				$screen,
+				'side',
+				'high'
+			);
+			add_meta_box(
+				'wen_call_to_action_usage_content_id',
+				__( 'Usage', 'wen-call-to-action' ),
+				array( $this, 'usage_meta_box_callback' ),
+				$screen,
+				'side'
+			);
+			add_meta_box(
+				'wen_call_to_action_style_content_id',
+				__( 'Call To Action Design', 'wen-call-to-action' ),
+				array( $this, 'cta_design_meta_box_callback' ),
+				$screen,
+				'normal',
+				'high'
+			);
 
-    }
+		}
 
-  }
+	}
 
-  /**
-   * Callback for CTA design metabox.
-   *
-   * @since    1.0.0
-   */
-  function cta_design_meta_box_callback( $post ){
+	/**
+	 * Callback for CTA design metabox.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param WP_Post $post Post object.
+	 */
+	function cta_design_meta_box_callback( $post ) {
 
-    $cta_custom_class = get_post_meta( $post->ID, '_cta_custom_class', true );
-    $cta_theme     = get_post_meta( $post->ID, '_cta_theme', true );
+		$cta_custom_class = get_post_meta( $post->ID, '_cta_custom_class', true );
+		$cta_theme     = get_post_meta( $post->ID, '_cta_theme', true );
 
-    ?>
+	?>
 
     <?php wp_nonce_field( plugin_basename( __FILE__ ), 'wen_cta_design_nonce' ); ?>
 
     <div id="main-cta-detail-wrap">
       <div class="field-row">
         <div class="field-label">
-          <?php _e( 'Theme', 'wen-call-to-action' ); ?>
+			<?php _e( 'Theme', 'wen-call-to-action' ); ?>
         </div><!-- .field-label -->
         <div class="field-content">
           <select name="_cta_theme">
@@ -231,145 +243,161 @@ class WEN_Call_To_Action_Admin {
       </div><!-- .field-row -->
       <div class="field-row">
         <div class="field-label">
-          <?php _e( 'Custom Class', 'wen-call-to-action' ); ?>
+			<?php _e( 'Custom Class', 'wen-call-to-action' ); ?>
         </div><!-- .field-label -->
         <div class="field-content">
-          <input type="text" name="_cta_custom_class" value="<?php echo esc_attr( $cta_custom_class) ?>" />
+          <input type="text" name="_cta_custom_class" value="<?php echo esc_attr( $cta_custom_class ) ?>" />
           <br/><em><?php _e( 'This class will be added in the wrapper HTML tag of the Call To Action.', 'wen-call-to-action' ); ?></em>
         </div><!-- .field-content -->
       </div><!-- .field-row -->
     </div><!-- #main-cta-detail-wrap -->
     <?php
 
-  }
+	}
 
-  /**
-   * Callback for CTA detail metabox.
-   *
-   * @since    1.0.0
-   */
-  function cta_meta_box_callback( $post ){
+	/**
+	 * Callback for CTA detail metabox.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param WP_Post $post Post object.
+	 */
+	function cta_meta_box_callback( $post ) {
 
-    $cta_button_text            = get_post_meta( $post->ID, '_cta_button_text', true );
-    $cta_button_url             = get_post_meta( $post->ID, '_cta_button_url', true );
-    $cta_button_open_new_window = get_post_meta( $post->ID, '_cta_button_open_new_window', true );
-    ?>
+		$cta_button_text            = get_post_meta( $post->ID, '_cta_button_text', true );
+		$cta_button_url             = get_post_meta( $post->ID, '_cta_button_url', true );
+		$cta_button_open_new_window = get_post_meta( $post->ID, '_cta_button_open_new_window', true );
+	?>
 
     <?php wp_nonce_field( plugin_basename( __FILE__ ), 'wen_cta_detail_nonce' ); ?>
 
     <div id="main-cta-detail-wrap">
       <div class="field-row">
         <div class="field-label">
-          <?php _e( 'Button Text', 'wen-call-to-action' ); ?>
+			<?php _e( 'Button Text', 'wen-call-to-action' ); ?>
         </div><!-- .field-label -->
         <div class="field-content">
-          <input type="text" name="_cta_button_text" value="<?php echo esc_attr( $cta_button_text) ?>" />
+          <input type="text" name="_cta_button_text" value="<?php echo esc_attr( $cta_button_text ) ?>" />
           <br/><em><?php _e( 'Enter button text', 'wen-call-to-action' ); ?></em>
         </div><!-- .field-content -->
       </div><!-- .field-row -->
       <div class="field-row">
         <div class="field-label">
-          <?php _e( 'Button URL', 'wen-call-to-action' ); ?>
+			<?php _e( 'Button URL', 'wen-call-to-action' ); ?>
         </div><!-- .field-label -->
         <div class="field-content">
-          <input type="text" name="_cta_button_url" value="<?php echo esc_url( $cta_button_url) ?>" />
+          <input type="text" name="_cta_button_url" value="<?php echo esc_url( $cta_button_url ) ?>" />
           <br/><em><?php _e( 'Enter full URL', 'wen-call-to-action' ); ?></em>
         </div><!-- .field-content -->
       </div><!-- .field-row -->
       <div class="field-row">
         <div class="field-label">
-          <?php _e( 'Open in New Window', 'wen-call-to-action' ); ?>
+			<?php _e( 'Open in New Window', 'wen-call-to-action' ); ?>
         </div><!-- .field-label -->
         <div class="field-content">
           <input type="hidden" name="_cta_button_open_new_window" value="0" />
           <input type="checkbox" name="_cta_button_open_new_window" value="1" <?php checked( $cta_button_open_new_window, 1 ); ?> />
-          <?php _e( 'Check to enable', 'wen-call-to-action' ); ?>
+			<?php _e( 'Check to enable', 'wen-call-to-action' ); ?>
         </div><!-- .field-content -->
       </div><!-- .field-row -->
 
     </div><!-- #main-cta-detail-wrap -->
     <?php
 
-  }
+	}
 
-  /**
-   * Save CTA detail metabox fields.
-   *
-   * @since    1.0.0
-   */
-  function save_cta_detail_meta_box( $post_id ){
+	/**
+	 * Save CTA detail metabox fields.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param int $post_id Current Post ID.
+	 */
+	function save_cta_detail_meta_box( $post_id ) {
 
-    if ( WEN_CALL_TO_ACTION_POST_TYPE_CTA != get_post_type( $post_id ) ) {
-      return $post_id;
-    }
+		if ( WEN_CALL_TO_ACTION_POST_TYPE_CTA !== get_post_type( $post_id ) ) {
+			return $post_id;
+		}
 
-    // Bail if we're doing an auto save
-    if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+		// Bail if we're doing an auto save.
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
 
-    // if our nonce isn't there, or we can't verify it, bail
-    if ( ! isset( $_POST['wen_cta_detail_nonce'] ) || ! wp_verify_nonce( $_POST['wen_cta_detail_nonce'], plugin_basename( __FILE__ ) ) )
-        return $post_id;
+		// If our nonce isn't there, or we can't verify it, bail.
+		if ( ! isset( $_POST['wen_cta_detail_nonce'] ) || ! wp_verify_nonce( $_POST['wen_cta_detail_nonce'], plugin_basename( __FILE__ ) ) ) {
+			return $post_id;
+		}
 
-    // if our current user can't edit this post, bail
-    if( ! current_user_can( 'edit_post' , $post_id ) )
-      return $post_id;
+		// If our current user can't edit this post, bail.
+		if ( ! current_user_can( 'edit_post' , $post_id ) ) {
+			return $post_id;
+		}
 
-    // get posted data
-    $cta_button_text            = sanitize_text_field( $_POST['_cta_button_text'] );
-    $cta_button_url             = esc_url( $_POST['_cta_button_url'] );
-    $cta_button_open_new_window = esc_attr( $_POST['_cta_button_open_new_window'] );
+		// Get posted data.
+		$cta_button_text            = sanitize_text_field( $_POST['_cta_button_text'] );
+		$cta_button_url             = esc_url_raw( $_POST['_cta_button_url'] );
+		$cta_button_open_new_window = esc_attr( $_POST['_cta_button_open_new_window'] );
 
-    // save now
-    update_post_meta( $post_id, '_cta_button_text', $cta_button_text );
-    update_post_meta( $post_id, '_cta_button_url', $cta_button_url );
-    update_post_meta( $post_id, '_cta_button_open_new_window', $cta_button_open_new_window );
+		// Save now.
+		update_post_meta( $post_id, '_cta_button_text', $cta_button_text );
+		update_post_meta( $post_id, '_cta_button_url', $cta_button_url );
+		update_post_meta( $post_id, '_cta_button_open_new_window', $cta_button_open_new_window );
 
-    return $post_id;
+		return $post_id;
 
-  }
-  /**
-   * Save CTA design metabox fields.
-   *
-   * @since    1.0.0
-   */
-  function save_cta_design_meta_box( $post_id ){
+	}
+	/**
+	 * Save CTA design metabox fields.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param int $post_id Current Post ID.
+	 */
+	function save_cta_design_meta_box( $post_id ) {
 
-    if ( WEN_CALL_TO_ACTION_POST_TYPE_CTA != get_post_type( $post_id ) ) {
-      return $post_id;
-    }
+		if ( WEN_CALL_TO_ACTION_POST_TYPE_CTA !== get_post_type( $post_id ) ) {
+			return $post_id;
+		}
 
-    // Bail if we're doing an auto save
-    if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+		// Bail if we're doing an auto save.
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
 
-    // if our nonce isn't there, or we can't verify it, bail
-    if ( ! isset( $_POST['wen_cta_design_nonce'] ) || ! wp_verify_nonce( $_POST['wen_cta_design_nonce'], plugin_basename( __FILE__ ) ) )
-        return $post_id;
+		// If our nonce isn't there, or we can't verify it, bail.
+		if ( ! isset( $_POST['wen_cta_design_nonce'] ) || ! wp_verify_nonce( $_POST['wen_cta_design_nonce'], plugin_basename( __FILE__ ) ) ) {
+			return $post_id;
+		}
 
-    // if our current user can't edit this post, bail
-    if( ! current_user_can( 'edit_post' , $post_id ) )
-      return $post_id;
+		// If our current user can't edit this post, bail.
+		if ( ! current_user_can( 'edit_post' , $post_id ) ) {
+			return $post_id;
+		}
 
-    // get posted data
-    $cta_custom_class = sanitize_key( $_POST['_cta_custom_class'] );
-    $cta_theme     = sanitize_key( $_POST['_cta_theme'] );
+		// Get posted data.
+		$cta_custom_class = sanitize_key( $_POST['_cta_custom_class'] );
+		$cta_theme     = sanitize_key( $_POST['_cta_theme'] );
 
-    // save now
-    update_post_meta( $post_id, '_cta_custom_class', $cta_custom_class );
-    update_post_meta( $post_id, '_cta_theme', $cta_theme );
+		// Save now.
+		update_post_meta( $post_id, '_cta_custom_class', $cta_custom_class );
+		update_post_meta( $post_id, '_cta_theme', $cta_theme );
 
-    return $post_id;
+		return $post_id;
 
-  }
+	}
 
 
-  /**
-   * Callback for usage metabox.
-   *
-   * @since    1.0.0
-   */
-  function usage_meta_box_callback( $post ){
+	/**
+	 * Callback for usage metabox.
+	 *
+	 * @since    1.0.0
+	 *
+	 * @param WP_Post $post Post object.
+	 */
+	function usage_meta_box_callback( $post ) {
 
-    ?>
+	?>
     <h4><?php _e( 'Shortcode', 'wen-call-to-action' ); ?></h4>
     <p><?php _e( 'Copy and paste this shortcode directly into any WordPress post or page.', 'wen-call-to-action' ); ?></p>
     <textarea class="large-text code" readonly="readonly"><?php echo '[wen_cta id="'.$post->ID.'"]'; ?></textarea>
@@ -379,10 +407,5 @@ class WEN_Call_To_Action_Admin {
     <textarea class="large-text code" readonly="readonly">&lt;?php echo do_shortcode("[wen_cta id='<?php echo $post->ID; ?>']"); ?&gt;</textarea>
     <?php
 
-  }
-
-
-
-
-
+	}
 }
